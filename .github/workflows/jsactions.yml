@@ -1,0 +1,14 @@
+name: "JS Actions"
+on: [push]
+
+jobs:
+  run-js-actions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: JS Action Greeting Message
+        id: Greet
+        uses: pusnayek/git-actions-demo@main
+        with:
+          who-to-greet: John
+      - name: Log Greeting Time
+        run: echo "${{ steps.Greet.outputs.Time }}"
