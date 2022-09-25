@@ -1,0 +1,20 @@
+name: Add file to GitHub
+on: [push]
+
+jobs:
+  add-random-file:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Init Git Repository
+        run: |
+          git init
+          git remote add origin "git@github.com:pusnayek/git-sync-demo.git"
+          git pull origin main
+          ls -a
+          git config user.name "$(git log -n 1 --pretty=format:%an)"
+          git config user.email "$(git log -n 1 --pretty=format:%ae)"
+          git log --oneline >> log.txt
+          ls -a
+          git add log.txt
+          git commit -m "Added log file"
+          git push origin master:main
