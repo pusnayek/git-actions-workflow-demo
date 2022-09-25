@@ -7,6 +7,8 @@ jobs:
     steps:
       - name: JS Action Greeting Message
         id: Greet
-        uses: actions/git-actions-demo@main
+        uses: pusnayek/git-actions-demo@main
         with:
           who-to-greet: John
+      - name: Log Greeting Time
+        run: echo "${{ steps.Greet.outputs.Time }}"
